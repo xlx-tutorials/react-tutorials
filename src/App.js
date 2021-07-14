@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from './components/Button'
+
+export const buttonStyle = {
+  color: 'slateblue',
+  background: 'lavender',
+  padding: 12,
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Button>Click Me</Button>
+      <Button variant='secondary'>Click Me</Button>
+      <Button variant='danger'>Click Me</Button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
