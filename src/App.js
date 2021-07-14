@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import Button from './components/Button'
+import Tabs from './components/Tabs'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -6,12 +8,33 @@ export const buttonStyle = {
   padding: 12,
 }
 
+const fakeTabs = [
+  {
+    label: 'Home',
+    value: 'home',
+  },
+  {
+    label: 'About',
+    value: 'about',
+  },
+  {
+    label: 'Download',
+    value: 'download',
+  },
+]
+
 function App() {
+  const [selectedTab, setSelectedTab] = useState('about')
+
   return (
     <div className='App'>
-      <Button>Click Me</Button>
-      <Button variant='secondary'>Click Me</Button>
-      <Button variant='danger'>Click Me</Button>
+      <Tabs
+        tabsList={fakeTabs}
+        defaultValue={selectedTab}
+        onChange={(val) => {
+          setSelectedTab(val)
+        }}
+      />
     </div>
   )
 }

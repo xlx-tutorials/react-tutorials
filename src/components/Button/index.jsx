@@ -3,12 +3,25 @@ import { buttonVariants } from './constants'
 const primary = {
   color: 'slateblue',
 }
+const secondary = { color: 'hotpink' }
 
-const secondary = {
-  color: 'hotpink',
+const activeStyle = {
+  color: 'white',
+  background: 'slateblue',
 }
 
-function Button({ variant = 'primary', children }) {
+// const defaultStyle = {
+
+// }
+
+function Button({
+  variant = 'primary',
+  children,
+  className,
+  style,
+  active = false,
+  ...props
+}) {
   const variants = Object.values(buttonVariants).map((item) => item.value)
 
   // If variant is not match, return error.
@@ -22,7 +35,22 @@ function Button({ variant = 'primary', children }) {
   }[variant]
 
   return (
-    <button className='Button' style={{ ...buttonVariantStyle }}>
+    <button
+      className='Button'
+      style={{
+        background: 'lavender',
+        border: 'none',
+        padding: '10px 18px',
+        color: 'royalblue',
+        borderRadius: 8,
+        cursor: 'pointer',
+        userSelect: 'none',
+        ...buttonVariantStyle,
+        ...(active && activeStyle),
+        ...style,
+      }}
+      {...props}
+    >
       {children}
     </button>
   )
