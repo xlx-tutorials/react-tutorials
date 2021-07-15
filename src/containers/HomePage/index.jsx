@@ -1,15 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useRef, useState } from 'react'
-import Button from './components/Button'
-import Tabs from './components/Tabs'
+import Button from '../../components/Button'
+import Tabs from '../../components/Tabs'
 import { button, text } from './button.module.css'
-import './scss/index.scss'
-import { List, ListItem } from './components/List'
+import '../../scss/index.scss'
+import { List, ListItem } from '../../components/List'
 // import { css } from '@emotion/css'
 import { css } from '@emotion/react'
-import { TITLE } from './constants/config'
-import Select from './components/Select'
-import Count from './components/Count'
+import { TITLE } from '../../constants/config'
+import Select from '../../components/Select'
+import Count from '../../components/Count'
+import { Link, navigate } from '@reach/router'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -49,7 +50,7 @@ const textCSS = css`
     text-decoration: underline;
   }
 `
-function App() {
+function HomePage({ auth }) {
   const [selectedTab, setSelectedTab] = useState('about')
   const [count, setCount] = useState(0)
   const mountedRef = useRef(false)
@@ -65,6 +66,8 @@ function App() {
 
   return (
     <div className='App'>
+      <button onClick={() => navigate(-1)}>back to prev path</button>
+      <Link to='/'>Back to Index Page</Link>
       <Count value={count2} onClick={() => setCount2(count2 + 1)} />
       <Select
         list={[
@@ -138,4 +141,4 @@ function App() {
   )
 }
 
-export default App
+export default HomePage
