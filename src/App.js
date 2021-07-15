@@ -7,6 +7,7 @@ import './scss/index.scss'
 import { List, ListItem } from './components/List'
 // import { css } from '@emotion/css'
 import { css } from '@emotion/react'
+import { TITLE } from './constants/config'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -53,7 +54,7 @@ function App() {
   return (
     <div className='App'>
       <div className='Heading' css={HeadingCSS}>
-        Hello worlds
+        {TITLE}
       </div>
 
       <p
