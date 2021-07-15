@@ -1,0 +1,14 @@
+.button {
+  background-color: slateblue;
+  color: white;
+  border: none;
+}
+
+.button span.text {
+  font-style: italic;
+}
+
+.text {
+  font-weight: bold;
+  padding: 12px;
+}

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from './components/Button'
 import Tabs from './components/Tabs'
+import { button, text } from './button.module.css'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -45,6 +46,10 @@ function App() {
           </Button>
         ))}
       </Tabs>
+
+      <button className={button}>
+        <span className={text}>click me</span>
+      </button>
     </div>
   )
 }
