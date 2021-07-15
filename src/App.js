@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from './components/Button'
 import Tabs from './components/Tabs'
 import { button, text } from './button.module.css'
@@ -8,6 +8,8 @@ import { List, ListItem } from './components/List'
 // import { css } from '@emotion/css'
 import { css } from '@emotion/react'
 import { TITLE } from './constants/config'
+import Select from './components/Select'
+import Count from './components/Count'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -50,9 +52,30 @@ const textCSS = css`
 function App() {
   const [selectedTab, setSelectedTab] = useState('about')
   const [count, setCount] = useState(0)
+  const mountedRef = useRef(false)
+  const [count2, setCount2] = useState(0)
+
+  useEffect(() => {
+    if (mountedRef.current) {
+      console.log(1)
+    } else {
+      mountedRef.current = true
+    }
+  }, [count])
 
   return (
     <div className='App'>
+      <Count value={count2} onClick={() => setCount2(count2 + 1)} />
+      <Select
+        list={[
+          { value: 'apple', label: 'Apple' },
+          { value: 'banana', label: 'Banana' },
+          { value: 'orange', label: 'Orange' },
+        ]}
+        defaultValue='orange'
+        onChange={(newValue) => alert(newValue)}
+      />
+      <button>refresh ref</button>
       <div className='Heading' css={HeadingCSS}>
         {TITLE}
       </div>
