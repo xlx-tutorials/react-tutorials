@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Button from './components/Button'
 import Tabs from './components/Tabs'
 import { button, text } from './button.module.css'
+import './scss/index.scss'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -50,6 +51,8 @@ function App() {
       <button className={button}>
         <span className={text}>click me</span>
       </button>
+
+      <h1 className='heading'>Lorem ipsum dolor sit amet consectetur.</h1>
     </div>
   )
 }
