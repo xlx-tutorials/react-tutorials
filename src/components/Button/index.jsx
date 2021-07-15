@@ -1,14 +1,15 @@
 import { buttonVariants } from './constants'
+import './button.css'
 
 const primary = {
   color: 'slateblue',
 }
 const secondary = { color: 'hotpink' }
 
-const activeStyle = {
-  color: 'white',
-  background: 'slateblue',
-}
+// const activeStyle = {
+//   color: 'white',
+//   background: 'slateblue',
+// }
 
 // const defaultStyle = {
 
@@ -36,7 +37,7 @@ function Button({
 
   return (
     <button
-      className='Button'
+      className={`Button ${active ? 'active' : ''}`}
       style={{
         background: 'lavender',
         border: 'none',
@@ -46,7 +47,7 @@ function Button({
         cursor: 'pointer',
         userSelect: 'none',
         ...buttonVariantStyle,
-        ...(active && activeStyle),
+        // ...(active && activeStyle),
         ...style,
       }}
       {...props}

@@ -34,7 +34,17 @@ function App() {
         onChange={(val) => {
           setSelectedTab(val)
         }}
-      />
+      >
+        {fakeTabs?.map((tab, i) => (
+          <Button
+            key={tab.value}
+            active={tab.value === selectedTab}
+            onClick={() => setSelectedTab(tab.value)}
+          >
+            {tab.label}
+          </Button>
+        ))}
+      </Tabs>
     </div>
   )
 }

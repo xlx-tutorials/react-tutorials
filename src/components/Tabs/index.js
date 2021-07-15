@@ -1,24 +1,5 @@
-import { useState } from 'react'
-import Button from '../Button'
-
-// const list = [
-//   {
-//     value: 'dasd',
-//     label: 'dad',
-//   }
-// ]
-
-function Tabs({ tabsList, defaultValue = 0, onChange }) {
-  const [curIndex, setCurIndex] = useState(
-    tabsList.findIndex((item) => item.value === defaultValue)
-  )
-
-  function handleClick(i, tab) {
-    setCurIndex(i)
-    if (onChange) onChange(tab.value)
-  }
-
-  if (!tabsList) return null
+// 无状态组件
+function Tabs({ children }) {
   return (
     <div
       className='Tabs'
@@ -28,15 +9,7 @@ function Tabs({ tabsList, defaultValue = 0, onChange }) {
         background: 'lavender',
       }}
     >
-      {tabsList?.map((tab, i) => (
-        <Button
-          key={tab.value}
-          active={curIndex === i}
-          onClick={() => handleClick(i, tab)}
-        >
-          {tab.label}
-        </Button>
-      ))}
+      {children}
     </div>
   )
 }
