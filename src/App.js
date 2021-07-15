@@ -1,9 +1,12 @@
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react'
 import Button from './components/Button'
 import Tabs from './components/Tabs'
 import { button, text } from './button.module.css'
 import './scss/index.scss'
 import { List, ListItem } from './components/List'
+// import { css } from '@emotion/css'
+import { css } from '@emotion/react'
 
 export const buttonStyle = {
   color: 'slateblue',
@@ -34,18 +37,32 @@ const selectedStyle = {
   color: 'white',
 }
 
+const HeadingCSS = css`
+  color: red;
+  font-weight: bold;
+`
+const textCSS = css`
+  span {
+    text-decoration: underline;
+  }
+`
 function App() {
   const [selectedTab, setSelectedTab] = useState('about')
   const [count, setCount] = useState(0)
 
   return (
     <div className='App'>
+      <div className='Heading' css={HeadingCSS}>
+        Hello worlds
+      </div>
+
       <p
         style={{
           fontSize: 12 + count,
         }}
+        css={textCSS}
       >
-        {count}
+        <span>{count}</span>
       </p>
       <Button onClick={() => setCount(count + 1)}>+</Button>
 
