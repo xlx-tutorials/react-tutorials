@@ -1,32 +1,16 @@
 import { css } from '@emotion/react'
+import BasicButton from '../../components/Buttons/BasicButton'
 import Form from '../../components/Form'
 import TextField from '../../components/Input/TextField'
-import BasicButton from '../../components/Buttons/BasicButton'
-import { useState } from 'react'
+import useTextField from '../../components/Input/TextField/hooks/useTextField'
 
 function FormPage() {
-  const [formValue, setFormValue] = useState({
-    phone: '',
-    capture: '',
-  })
-
-  const [formState, setFormState] = useState({
-    phone: '123',
-    capture: '',
-  })
+  const { value: input1, bind: bind1, setValue: setValue1 } = useTextField()
+  const { value: input2, bind: bind2, setValue: setValue2 } = useTextField()
 
   return (
     <div className='FormPage'>
       <Form
-        onSubmit={(ev) => {
-          const input = ev.target.elements[0].value
-          const input2 = ev.target.elements[1].value
-
-          setFormValue({
-            phone: input,
-            capture: input2,
-          })
-        }}
         css={css`
           display: flex;
           flex-direction: column;
@@ -37,27 +21,22 @@ function FormPage() {
           }
         `}
       >
-        <TextField
-          name='phone'
-          value={formState.phone}
-          onChange={(ev) => setFormState({ phone: ev.target.value })}
-          placeholder='请输入手机号'
-        />
-        <TextField
-          name='capture'
-          value={formState.capture}
-          onChange={(ev) => setFormState({ capture: ev.target.value })}
-          placeholder='请输入短信验证码'
-        />
+        <TextField name='phone' placeholder='请输入手机号' {...bind1} />
+        <TextField name='capture' placeholder='请输入短信验证码' {...bind2} />
         <BasicButton type='submit'>Submit</BasicButton>
       </Form>
 
-      <button onClick={() => setFormState({ phone: '', capture: '' })}>
+      <button
+        onClick={() => {
+          setValue1('')
+          setValue2('')
+        }}
+      >
         clear
       </button>
 
-      <p>phone:{formState.phone}</p>
-      <p>capture:{formState.capture}</p>
+      <p>phone:{input1}</p>
+      <p>capture:{input2}</p>
     </div>
   )
 }
