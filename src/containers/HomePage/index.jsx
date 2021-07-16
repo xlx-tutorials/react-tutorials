@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { useEffect, useRef, useState } from 'react'
 import Button from '../../components/Button'
 import Tabs from '../../components/Tabs'
